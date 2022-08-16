@@ -1,0 +1,35 @@
+﻿
+@model DebetCredit.Models.BalanceTableModel
+@{
+    ViewBag.Title = "OutACTION";
+}
+ 
+<table class="table table-bordered table-striped  text-center">
+    <tr>
+        <td><b>Дата</b></td>
+        <td><b>Приход/Расход</b></td>
+        <td><b>Категория</b></td>
+        <td><b>Сумма</b></td>
+        <td><b>Комментарии</b></td>
+        <td><b>Действия</b></td>
+    </tr>
+    @foreach (var item in Model.Rows)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Date)</td>
+            <td>@Html.DisplayFor(model => item.Inout)</td>
+            <td>@Html.DisplayFor(model => item.Category)</td>
+            <td>@Html.DisplayFor(model => item.Summ)</td>
+            <td>@Html.DisplayFor(model => item.Comment)</td>
+            <td>
+                <a class="btn btn-success" href="@Url.Action("Edit", "Balance", new {@id=@item.ID })">Редактировать</a><br /><br />
+                <a class="btn btn-danger" href="@Url.Action("Delete", "Balance", new {@id=@item.ID })">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+<div class="btn btn-info">
+    @Html.ActionLink("Вернуться к списку", "Index")
+</div>

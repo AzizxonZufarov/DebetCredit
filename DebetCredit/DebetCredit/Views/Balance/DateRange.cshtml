@@ -1,0 +1,92 @@
+﻿
+@model DebetCredit.Models.BalanceTableModel
+@{
+    ViewBag.Title = "Статистика";
+}
+<br />
+<div class="row">
+
+    <div class="col-md-6">
+
+        <table class="table table-bordered text-center">
+            <tr>
+                <td class="text-center" colspan="5"><b>Доходы</b></td>
+            </tr>
+            <tr>
+                <td><b>Дата</b></td>
+                <td><b>Приход/Расход</b></td>
+                <td><b>Сумма</b></td>
+                <td><b>Комментарии</b></td>
+            </tr>
+            @foreach (var item in Model.Rows)
+            {
+                if (item.Category == "Доход")
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.Date)</td>
+                        <td>@Html.DisplayFor(model => item.Inout)</td>
+                        <td>@Html.DisplayFor(model => item.Summ)</td>
+                        <td>@Html.DisplayFor(model => item.Comment)</td>
+                    </tr>
+                }
+            }
+            <tr>
+                <th colspan="2">
+                    Итого:
+                </th>
+                <th colspan="2">
+                    @Model.TotalIncomeSum
+                </th>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+
+    </div>
+    <div class="col-md-6">
+
+        <table class="table table-bordered text-center">
+            <tr>
+                <td colspan="5"><b>Расходы</b></td>
+            </tr>
+            <tr>
+                <td><b>Дата</b></td>
+                <td><b>Приход/Расход</b></td>
+                <td><b>Сумма</b></td>
+                <td><b>Комментарии</b></td>
+            </tr>
+            @foreach (var item in Model.Rows)
+            {
+                if (item.Category == "Расход")
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(model => item.Date)</td>
+                        <td>@Html.DisplayFor(model => item.Inout)</td>
+                        <td>@Html.DisplayFor(model => item.Summ)</td>
+                        <td>@Html.DisplayFor(model => item.Comment)</td>
+                    </tr>
+                }
+            }
+            <tr>
+                <th colspan="2">
+                    Итого: 
+                </th>
+                <th colspan="2">
+                    @Model.TotalOutcomeSum
+                </th>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
